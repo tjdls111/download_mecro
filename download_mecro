@@ -65,9 +65,11 @@ for page in range(10):
         pag.click(1911, 193 + 55 * i)
         pag.dragRel(0, 55, 2, button='left')  # 스크롤 내리기
 
+    #페이지 넘기기
     pag.click(1911,1004)
     pag.click(clicks=3)
-    pag.click(929,778+38*page)
+    pag.click(929+38*page,782)
+    sleep(1)
 
 
 
