@@ -29,42 +29,48 @@ def fast_download():
                     sleep(0.5)
                     pag.click(1032, m + 13)
                     return 0
-        elif (a, b, c) == (red, green, blue):
+        elif (a, b, c) == (red, green, blue): #전체 이미지가 단수일 때
             pag.click(1100, y)
             # 이미지 다운로드 팝업창에서 클릭하는 과정
             screen2 = ImageGrab.grab()
             for m in range(810, 933):
                 a1, b1, c1 = screen2.getpixel((777, m))
                 if (a1, b1, c1) == (0, 128, 128):
-                    pag.click(777, m - 562)
-                    pag.click(777, m - 474)
+                    pag.click(777, m - 578)
+                    pag.click(777, m - 480)
                     pag.click(777, m + 16)
                     sleep(0.5)
                     pag.click(1032, m + 16)
                     return 0
+for page in range(10):  #10페이지까지 작동
+    for i in range(12):  # 세로-12줄(13줄이 있긴 한데 거기는 들쭉날쭉이라서 일단 뺌)
+        for j in range(4):  # 가로 4개씩 있음
+            print("0.5초 안에 F4를 누르면 종료됩니다.")
+            sleep(0.5)
+            if keyboard.is_pressed('f4'): break  # 반복 종료
 
+            pag.click(699 + (300 * j), 844)
+            sleep(1)  # 로딩될 동안 1초 기다리기
+            fast_download()
+            pag.click(20, 50)  # 뒤로 가기
+            sleep(1)  # 로딩될 동안 1초 기다리기
 
-for i in range(12):  # 세로-12줄(13줄이 있긴 한데 거기는 들쭉날쭉이라서 일단 뺌)
-    for j in range(4):  # 가로 4개씩 있음
-        print("0.5초 안에 F4를 누르면 종료됩니다.")
-        sleep(0.5)
-        if keyboard.is_pressed('f4'): break  # 반복 종료
+            # 마우스를 적절한 위치에 가져다두기(뒤로 가기 해서 이상한 위치로 갈 경우)
+            if 1 < i:
+                pag.click(1911, 124)
+                pag.click(clicks=5)
+                pag.moveTo(1911, 193)
+                pag.dragTo(1911, 193 + 55 * i, 2, button='left')
 
-        pag.click(699 + (300 * j), 844)
-        sleep(1)  # 로딩될 동안 1초 기다리기
-        fast_download()
-        pag.click(20, 50)  # 뒤로 가기
-        sleep(1)  # 로딩될 동안 1초 기다리기
+        pag.click(1911, 193 + 55 * i)
+        pag.dragRel(0, 55, 2, button='left')  # 스크롤 내리기
 
-        # 마우스를 적절한 위치에 가져다두기(뒤로 가기 해서 이상한 위치로 갈 경우)
-        if 1 < i:
-            pag.click(1911, 124)
-            pag.click(clicks=5)
-            pag.moveTo(1911, 193)
-            pag.dragTo(1911, 193 + 55 * i, 2, button='left')
+    #페이지 넘기기
+    pag.click(1911,1004)
+    pag.click(clicks=3)
+    pag.click(948+38*page,782)
+    sleep(2)
 
-    pag.click(1911, 193 + 55 * i)
-    pag.dragRel(0, 55, 2, button='left')  # 스크롤 내리기
 
 
 
