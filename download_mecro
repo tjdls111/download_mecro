@@ -2,7 +2,11 @@ import pyautogui as pag
 import keyboard
 from time import sleep
 from PIL import ImageGrab
+import sys
 
+global num1
+global num2
+global num3
 
 def fast_download():
     # 이미지 다운로드를 찾아서 클릭
@@ -29,7 +33,7 @@ def fast_download():
                     sleep(0.5)
                     pag.click(1032, m + 13)
                     return 0
-        elif (a, b, c) == (red, green, blue): #전체 이미지가 단수일 때
+        elif (a, b, c) == (red, green, blue):  # 전체 이미지가 단수일 때
             pag.click(1100, y)
             # 이미지 다운로드 팝업창에서 클릭하는 과정
             screen2 = ImageGrab.grab()
@@ -42,10 +46,19 @@ def fast_download():
                     sleep(0.5)
                     pag.click(1032, m + 13)
                     return 0
-for page in range(10):  #10페이지까지 작동
+    #만약에 다운로드 버튼이 없으면
+    f = open('memo.txt', 'a')
+    f.write("{}페이지의 {}번째 줄의 {}번째 유물은 다운로드 불가능입니다.".format(num1+1,num2+1,num3+1))
+    f.write('\n')
+    f.close()
+
+for page in range(10):  # 10페이지까지 작동
     for i in range(12):  # 세로-12줄(13줄이 있긴 한데 거기는 들쭉날쭉이라서 일단 뺌)
         for j in range(4):  # 가로 4개씩 있음
-            print("{}번째 유물 이미지를 다운로드 받는 중입니다.".format(page*(48)+i*4+j+1))
+            num1=page
+            num2=i
+            num3=j
+            print("{}번째 유물 이미지를 다운로드 받는 중입니다.".format(page * (48) + i * 4 + j + 1))
             print("멈추려면 0.5초 안에 F4를 누르세요!")
             sleep(0.5)
             if keyboard.is_pressed('f4'): break  # 반복 종료
@@ -66,13 +79,9 @@ for page in range(10):  #10페이지까지 작동
         pag.click(1911, 193 + 54 * i)
         pag.dragRel(0, 54, 2, button='left')  # 스크롤 내리기
 
-    #페이지 넘기기
-    pag.moveTo(1911,953) #맨 아래로 가게 함
+    # 페이지 넘기기
+    pag.moveTo(1911, 953)  # 맨 아래로 가게 함
     pag.click(clicks=2)
     sleep(1)
-    pag.click(931+38*(page+1),721)
+    pag.click(931 + 38 * (page + 1), 721)
     sleep(4)
-
-
-
-
