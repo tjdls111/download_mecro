@@ -45,7 +45,7 @@ def fast_download():
 for page in range(10):  #10페이지까지 작동
     for i in range(12):  # 세로-12줄(13줄이 있긴 한데 거기는 들쭉날쭉이라서 일단 뺌)
         for j in range(4):  # 가로 4개씩 있음
-            print("{}개 살펴보는 중".format(page*(48)+i*4+j))
+            print("{}번째 유물 이미지를 다운로드 받는 중입니다.".format(page*(48)+i*4+j+1))
             print("멈추려면 0.5초 안에 F4를 누르세요!")
             sleep(0.5)
             if keyboard.is_pressed('f4'): break  # 반복 종료
@@ -67,10 +67,10 @@ for page in range(10):  #10페이지까지 작동
         pag.dragRel(0, 54, 2, button='left')  # 스크롤 내리기
 
     #페이지 넘기기
-    pag.moveTo(1911,1016)
-    pag.click(clicks=3)  #맨 아래로 가게 함
+    pag.moveTo(1911,953) #맨 아래로 가게 함
+    pag.click(clicks=2)
     sleep(1)
-    pag.click(931+38*page,778)
+    pag.click(931+38*(page+1),721)
     sleep(4)
 
 
