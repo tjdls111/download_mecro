@@ -25,7 +25,7 @@ def fast_download():
             sleep(0.5)
             # 이미지 다운로드 팝업창에서 클릭하는 과정
             screen2 = ImageGrab.grab()
-            for m in range(810, 980):
+            for m in range(713, 980):
                 a1, b1, c1 = screen2.getpixel((536, m))
                 if (a1, b1, c1) == (0, 128, 128):
                     pag.click(536, m - 580)
@@ -41,7 +41,7 @@ def fast_download():
             pag.click(1100, y)
             # 이미지 다운로드 팝업창에서 클릭하는 과정
             screen2 = ImageGrab.grab()
-            for m in range(810, 933):
+            for m in range(704, 950):
                 a1, b1, c1 = screen2.getpixel((536, m))
                 if (a1, b1, c1) == (0, 128, 128):
                     pag.click(536, m - 578)
@@ -109,3 +109,4 @@ for page in range(10):  # 10페이지까지 작동
     sleep(1)
     pag.click(738 + 34 * (page + 1), 721)
     sleep(2)
+print("다운로드가 끝났습니다. 감사합니다.")
