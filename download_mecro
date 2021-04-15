@@ -65,7 +65,7 @@ for page in range(10):  # 10페이지까지 작동
             num1=page
             num2=i
             num3=j
-            print("{}번째 유물 이미지를 다운로드 받는 중입니다.".format(page * (48) + i * 4 + j + 1))
+            print("{}번째 유물 이미지를 다운로드 받는 중입니다.".format(page * 50 + i * 4 + j + 1))
             #print("멈추려면 0.5초 안에 F4를 누르세요!")
             #sleep(0.5)
             #if keyboard.is_pressed('f4'): break  # 반복 종료
