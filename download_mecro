@@ -25,16 +25,16 @@ def fast_download():
             sleep(0.5)
             # 이미지 다운로드 팝업창에서 클릭하는 과정
             screen2 = ImageGrab.grab()
-            for m in range(810, 933):
-                a1, b1, c1 = screen2.getpixel((777, m))
+            for m in range(810, 980):
+                a1, b1, c1 = screen2.getpixel((536, m))
                 if (a1, b1, c1) == (0, 128, 128):
-                    pag.click(777, m - 568)
+                    pag.click(536, m - 580)
                     sleep(0.5)
-                    pag.click(777, m - 499)
+                    pag.click(536, m - 503)
                     sleep(0.5)
-                    pag.click(777, m + 13)
+                    pag.click(536, m + 7)
                     sleep(0.5)
-                    pag.click(1032, m + 13)
+                    pag.click(862, m + 7)
                     sleep(0.5)
                     return 0
         elif (a, b, c) == (red, green, blue):  # 전체 이미지가 단수일 때
@@ -42,15 +42,15 @@ def fast_download():
             # 이미지 다운로드 팝업창에서 클릭하는 과정
             screen2 = ImageGrab.grab()
             for m in range(810, 933):
-                a1, b1, c1 = screen2.getpixel((777, m))
+                a1, b1, c1 = screen2.getpixel((536, m))
                 if (a1, b1, c1) == (0, 128, 128):
-                    pag.click(777, m - 578)
+                    pag.click(536, m - 578)
                     sleep(0.5)
-                    pag.click(777, m - 480)
+                    pag.click(536, m - 480)
                     sleep(0.5)
-                    pag.click(777, m + 13)
+                    pag.click(536, m + 13)
                     sleep(0.5)
-                    pag.click(1032, m + 13)
+                    pag.click(862, m + 13)
                     sleep(0.5)
                     return 0
     #만약에 다운로드 버튼이 없으면
@@ -70,41 +70,42 @@ for page in range(10):  # 10페이지까지 작동
             #sleep(0.5)
             #if keyboard.is_pressed('f4'): break  # 반복 종료
 
-            pag.click(699 + (300 * j), 844)
+            pag.click(476 + (285 * j), 834)
             sleep(1)  # 로딩될 동안 1초 기다리기
             fast_download()
-            pag.click(20, 50)  # 뒤로 가기
+            pag.click(28, 56)  # 뒤로 가기
             sleep(1)  # 로딩될 동안 1초 기다리기
 
             # 마우스를 적절한 위치에 가져다두기(뒤로 가기 해서 이상한 위치로 갈 경우를 대비)
             if 1 < i:
-                pag.click(1911, 124)
+                pag.click(1514, 137)
                 pag.click(clicks=5)
-                pag.moveTo(1911, 193)
-                pag.dragTo(1911, 193 + 54 * i, 2, button='left')
+                pag.moveTo(1514, 191)
+                pag.dragTo(1514, 191 + 53 * i, 2, button='left')
 
-        pag.click(1911, 193 + 54 * i)
-        pag.dragRel(0, 54, 2, button='left')  # 스크롤 내리기
+        pag.click(1514, 191 + 53 * i)
+        pag.dragRel(0, 53, 2, button='left')  # 스크롤 내리기
 
     #마지막 줄
-    pag.moveTo(1911, 961)  # 맨 아래로 가게 함
+    pag.moveTo(1514, 961)  # 맨 아래로 가게 함
     pag.click(clicks=6)
     screen3 = ImageGrab.grab()
     k_cnt = 0
     for k in range(4):
-        if screen3.getpixel((555 + 289 * k, 419)) == (220, 219, 219):
+        if screen3.getpixel((364 + 282 * k, 419)) == (220, 219, 219):
             k_cnt = k_cnt + 1
-            pag.click(699 + (300 * k), 477)
+            print("{}번째 유물 이미지를 다운로드 받는 중입니다.".format(page * 50 + 48+k_cnt))
+            pag.click(475+(282 * k), 477)
             sleep(1)  # 로딩될 동안 1초 기다리기
             fast_download()
             pag.click(20, 50)  # 뒤로 가기
             sleep(1)  # 로딩될 동안 1초 기다리기
-            pag.moveTo(1911, 961)  # 맨 아래로 가게 함
+            pag.moveTo(1514, 961)  # 맨 아래로 가게 함
             pag.click(clicks=6)
 
     # 페이지 넘기기
-    pag.moveTo(1911, 953)  # 맨 아래로 가게 함
+    pag.moveTo(1514, 953)  # 맨 아래로 가게 함
     pag.click(clicks=2)
     sleep(1)
-    pag.click(931 + 38 * (page + 1), 721)
+    pag.click(738 + 34 * (page + 1), 721)
     sleep(2)
