@@ -30,7 +30,7 @@ def fast_download():
                 if (a1, b1, c1) == (0, 128, 128):
                     pag.click(536, m - 580)
                     sleep(0.5)
-                    pag.click(536, m - 503)
+                    pag.click(536, m - 343)
                     sleep(0.5)
                     pag.click(536, m + 7)
                     sleep(0.5)
@@ -46,7 +46,7 @@ def fast_download():
                 if (a1, b1, c1) == (0, 128, 128):
                     pag.click(536, m - 578)
                     sleep(0.5)
-                    pag.click(536, m - 480)
+                    pag.click(536, m - 343) #다운로드 목적에 맞게 y좌표 값 수정하기
                     sleep(0.5)
                     pag.click(536, m + 13)
                     sleep(0.5)
@@ -54,7 +54,7 @@ def fast_download():
                     sleep(0.5)
                     return 0
     #만약에 다운로드 버튼이 없으면
-    f = open('memotwo.txt', 'a')
+    f = open('memo0416_1142.txt', 'a')
     f.write("{}페이지의 {}번째 줄의 {}번째 유물은 다운로드 불가능입니다.".format(num1+1,num2+1,num3+1))
     f.write('\n')
     f.close()
@@ -66,14 +66,15 @@ for page in range(10):  # 10페이지까지 작동
             num2=i
             num3=j
             print("{}번째 유물 이미지를 다운로드 받는 중입니다.".format(page * 50 + i * 4 + j + 1))
-            #print("멈추려면 0.5초 안에 F4를 누르세요!")
+            #print("{}페이지-{}번째 줄-{}번째 유물".format(page,i,j))
+            #print("멈추려면 0.5초 안에 F4를 누르세요!")D
             #sleep(0.5)
             #if keyboard.is_pressed('f4'): break  # 반복 종료
 
             pag.click(476 + (285 * j), 834)
             sleep(1)  # 로딩될 동안 1초 기다리기
             fast_download()
-            pag.click(28, 56)  # 뒤로 가기
+            pag.click(28, 56)  # 뒤로 가기D
             sleep(1)  # 로딩될 동안 1초 기다리기
 
             # 마우스를 적절한 위치에 가져다두기(뒤로 가기 해서 이상한 위치로 갈 경우를 대비)
@@ -107,6 +108,14 @@ for page in range(10):  # 10페이지까지 작동
     pag.moveTo(1514, 953)  # 맨 아래로 가게 함
     pag.click(clicks=2)
     sleep(1)
-    pag.click(738 + 34 * (page + 1), 721)
-    sleep(2)
+    if page==0: pag.click(767, 721)
+    elif page==1: pag.click(809,718)
+    elif page==2: pag.click(843,719)
+    elif page==3: pag.click(886,720)
+    elif page==4:pag.click(922,722)
+    elif page==5:pag.click(959,722)
+    elif page==6:pag.click(997,722)
+    elif page==7:pag.click(1034,722)
+    elif page==8:pag.click(1073,722)
+    sleep(3)
 print("다운로드가 끝났습니다. 감사합니다.")
