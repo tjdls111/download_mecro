@@ -19,42 +19,43 @@ def fast_download():
     screen = ImageGrab.grab()
 
     for y in range(y_end, y_start, -1):
-        a, b, c = screen.getpixel((1100, y))
+        a, b, c = screen.getpixel((910, y))
         if (a, b, c) == (red1, green1, blue1):  # 전체 다운로드가 있는 경우(이미지 복수일 때)
-            pag.click(1100, y)
-            sleep(0.5)
+            pag.click(910, y-1)
+            sleep(1)
             # 이미지 다운로드 팝업창에서 클릭하는 과정
             screen2 = ImageGrab.grab()
             for m in range(713, 980):
                 a1, b1, c1 = screen2.getpixel((536, m))
                 if (a1, b1, c1) == (0, 128, 128):
                     pag.click(536, m - 580)
-                    sleep(0.5)
+                    sleep(0.3)
                     pag.click(536, m - 343)
-                    sleep(0.5)
+                    sleep(0.3)
                     pag.click(536, m + 7)
-                    sleep(0.5)
+                    sleep(1)
                     pag.click(862, m + 7)
-                    sleep(0.5)
+                    sleep(1)
                     return 0
         elif (a, b, c) == (red, green, blue):  # 전체 이미지가 단수일 때
-            pag.click(1100, y)
+            pag.click(910, y-1)
+            sleep(1)
             # 이미지 다운로드 팝업창에서 클릭하는 과정
             screen2 = ImageGrab.grab()
             for m in range(704, 950):
                 a1, b1, c1 = screen2.getpixel((536, m))
                 if (a1, b1, c1) == (0, 128, 128):
                     pag.click(536, m - 578)
-                    sleep(0.5)
-                    pag.click(536, m - 343) #다운로드 목적에 맞게 y좌표 값 수정하기
-                    sleep(0.5)
+                    sleep(0.3)
+                    pag.click(536, m - 343)
+                    sleep(0.3)
                     pag.click(536, m + 13)
-                    sleep(0.5)
+                    sleep(1)
                     pag.click(862, m + 13)
-                    sleep(0.5)
+                    sleep(1)
                     return 0
     #만약에 다운로드 버튼이 없으면
-    f = open('memo0416_1142.txt', 'a')
+    f = open('memo0417_1211.txt', 'a')
     f.write("{}페이지의 {}번째 줄의 {}번째 유물은 다운로드 불가능입니다.".format(num1+1,num2+1,num3+1))
     f.write('\n')
     f.close()
@@ -72,7 +73,7 @@ for page in range(10):  # 10페이지까지 작동
             #if keyboard.is_pressed('f4'): break  # 반복 종료
 
             pag.click(476 + (285 * j), 834)
-            sleep(1)  # 로딩될 동안 1초 기다리기
+            sleep(2)  # 로딩될 동안 1초 기다리기
             fast_download()
             pag.click(28, 56)  # 뒤로 가기D
             sleep(1)  # 로딩될 동안 1초 기다리기
@@ -97,10 +98,10 @@ for page in range(10):  # 10페이지까지 작동
             k_cnt = k_cnt + 1
             print("{}번째 유물 이미지를 다운로드 받는 중입니다.".format(page * 50 + 48+k_cnt))
             pag.click(475+(282 * k), 477)
-            sleep(1)  # 로딩될 동안 1초 기다리기
+            sleep(2)  # 로딩될 동안 1초 기다리기
             fast_download()
             pag.click(20, 50)  # 뒤로 가기
-            sleep(1)  # 로딩될 동안 1초 기다리기
+            sleep(3)  # 로딩될 동안 3초 기다리기
             pag.moveTo(1514, 961)  # 맨 아래로 가게 함
             pag.click(clicks=6)
 
@@ -117,5 +118,5 @@ for page in range(10):  # 10페이지까지 작동
     elif page==6:pag.click(997,722)
     elif page==7:pag.click(1034,722)
     elif page==8:pag.click(1073,722)
-    sleep(3)
+    sleep(5)
 print("다운로드가 끝났습니다. 감사합니다.")
