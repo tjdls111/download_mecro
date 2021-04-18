@@ -16,50 +16,148 @@ def fast_download():
     screen = ImageGrab.grab()
 
     for y in range(y_end, y_start, -1):
-        a, b, c = screen.getpixel((1100, y))
+        a, b, c = screen.getpixel((910, y))
+        if keyboard.is_pressed('F2') == True:
+            break
         if (a, b, c) == (red1, green1, blue1):  # 전체 다운로드가 있는 경우(이미지 복수일 때)
-            pag.click(1100, y)
+            pag.click(910, y-1)
+            if keyboard.is_pressed('F2') == True:
+                break
+            sleep(2)
+            if keyboard.is_pressed('F2') == True:
+                break
             # 이미지 다운로드 팝업창에서 클릭하는 과정
             screen2 = ImageGrab.grab()
-            for m in range(810, 933):
-                a1, b1, c1 = screen2.getpixel((777, m))
+            if keyboard.is_pressed('F2') == True:
+                break
+            for m in range(713, 980):
+                a1, b1, c1 = screen2.getpixel((536, m))
+                if keyboard.is_pressed('F2') == True:
+                    break
                 if (a1, b1, c1) == (0, 128, 128):
-                    pag.click(777, m - 568)
-                    pag.click(777, m - 499)
-                    pag.click(777, m + 13)
-                    sleep(0.5)
-                    pag.click(1032, m + 13)
+                    pag.click(536, m - 580)
+                    if keyboard.is_pressed('F2') == True:
+                        break
+                    sleep(1)
+                    if keyboard.is_pressed('F2') == True:
+                        break
+                    pag.click(536, m - 343)
+                    if keyboard.is_pressed('F2') == True:
+                        break
+                    sleep(1)
+                    pag.click(536, m + 7)
+                    if keyboard.is_pressed('F2') == True:
+                        break
+                    sleep(1)
+                    if keyboard.is_pressed('F2') == True:
+                        break
+                    pag.click(862, m + 7)
+                    if keyboard.is_pressed('F2') == True:
+                        break
+                    sleep(1)
+                    if keyboard.is_pressed('F2') == True:
+                        break
                     return 0
         elif (a, b, c) == (red, green, blue):  # 전체 이미지가 단수일 때
-            pag.click(1100, y)
+            if keyboard.is_pressed('F2') == True:
+                break
+            pag.click(910, y-1)
+            if keyboard.is_pressed('F2') == True:
+                break
+            sleep(2)
+            if keyboard.is_pressed('F2') == True:
+                break
             # 이미지 다운로드 팝업창에서 클릭하는 과정
             screen2 = ImageGrab.grab()
-            for m in range(810, 933):
-                a1, b1, c1 = screen2.getpixel((777, m))
+            for m in range(704, 950):
+                a1, b1, c1 = screen2.getpixel((536, m))
                 if (a1, b1, c1) == (0, 128, 128):
-                    pag.click(777, m - 578)
-                    pag.click(777, m - 480)
-                    pag.click(777, m + 13)
-                    sleep(0.5)
-                    pag.click(1032, m + 13)
+                    pag.click(536, m - 578)
+                    if keyboard.is_pressed('F2') == True:
+                        break
+                    sleep(1)
+                    if keyboard.is_pressed('F2') == True:
+                        break
+                    pag.click(536, m - 343)
+                    if keyboard.is_pressed('F2') == True:
+                        break
+                    sleep(1)
+                    if keyboard.is_pressed('F2') == True:
+                        break
+                    pag.click(536, m + 13)
+                    if keyboard.is_pressed('F2') == True:
+                        break
+                    sleep(1)
+                    if keyboard.is_pressed('F2') == True:
+                        break
+                    pag.click(862, m + 13)
+                    if keyboard.is_pressed('F2') == True:
+                        break
+                    sleep(1)
+                    if keyboard.is_pressed('F2') == True:
+                        break
                     return 0
-    #만약에 다운로드 버튼이 없으면
-    f = open('memotwo.txt', 'a')
+def download(line):
+    for i in range(int(line)): #세로-몇 줄 받을건지
+        for j in range(4):  # 가로 4개씩 있음
 
-    f.write('\n')
-    f.close()
+            if keyboard.is_pressed('F2') == True:
+                break
+            global num2
+            num2 = i
+            if keyboard.is_pressed('F2') == True:
+                break
+            global num3
+            num3 = j
+            if keyboard.is_pressed('F2') == True:
+                break
+            print("{}번째 유물 이미지를 다운로드 받는 중입니다.".format( i * 4 + j + 1))
+            if keyboard.is_pressed('F2') == True:
+                break
 
-pag.moveTo(1911, 961)  # 맨 아래로 가게 함
-pag.click(clicks=6)
-screen3 = ImageGrab.grab()
-k_cnt = 0
-for k in range(4):
-    if screen3.getpixel((555 + 289 * k, 419)) == (220, 219, 219):
-        k_cnt = k_cnt + 1
-        pag.click(699 + (300 * k), 477)
-        sleep(1)  # 로딩될 동안 1초 기다리기
-        fast_download()
-        pag.click(20, 50)  # 뒤로 가기
-        sleep(1)  # 로딩될 동안 1초 기다리기
-        pag.moveTo(1911, 961)  # 맨 아래로 가게 함
-        pag.click(clicks=6)
+            # print("{}페이지-{}번째 줄-{}번째 유물".format(page,i,j))
+            # print("멈추려면 0.5초 안에 F4를 누르세요!")D
+            # sleep(0.5)
+            # if keyboard.is_pressed('f4'): break  # 반복 종료
+
+            pag.click(476 + (285 * j), 834)
+            if keyboard.is_pressed('F2') == True:
+                break
+            sleep(2)  # 로딩될 동안 1초 기다리기
+            if keyboard.is_pressed('F2') == True:
+                break
+            fast_download()
+            if keyboard.is_pressed('F2') == True:
+                break
+            pag.click(28, 56)  # 뒤로 가기
+            if keyboard.is_pressed('F2') == True:
+                break
+            sleep(1)  # 로딩될 동안 1초 기다리기
+            if keyboard.is_pressed('F2') == True:
+                break
+
+            # 마우스를 적절한 위치에 가져다두기(뒤로 가기 해서 이상한 위치로 갈 경우를 대비)
+            if 1 < i:
+                pag.click(1514, 137)
+                if keyboard.is_pressed('F2') == True:
+                    break
+                pag.click(clicks=5)
+                if keyboard.is_pressed('F2') == True:
+                    break
+                pag.moveTo(1514, 191)
+                if keyboard.is_pressed('F2') == True:
+                    break
+                pag.dragTo(1514, 191 + 53 * i, 2, button='left')
+                if keyboard.is_pressed('F2') == True:
+                    break
+
+        pag.click(1514, 191 + 53 * i)
+        if keyboard.is_pressed('F2') == True:
+            break
+        pag.dragRel(0, 53, 2, button='left')  # 스크롤 내리기
+        if keyboard.is_pressed('F2') == True:
+            break
+
+
+how_much_line=int(input())
+download(how_much_line)
