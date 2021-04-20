@@ -366,5 +366,5 @@ def download(pagenum):
 
     print("다운로드가 끝났습니다. 감사합니다.")
 
-how_much_page=int(input())
+how_much_page=int(input('50개 가득 찬 페이지가 몇 개인가요? (1-10)'))
 download(how_much_page)
